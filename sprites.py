@@ -132,6 +132,19 @@ class Score(pygame.sprite.Sprite):
 score_single_group = pygame.sprite.GroupSingle()
 score_single_group.add(Score(0))
 
+
+class Healthbar(Score):
+    def __init__(self, x, y,score_value,picture_path):
+        super().__init__(x, y,score_value)
+        self.image = pygame.image.load(picture_path)
+        self.image_scaled = pygame.transform.scale(self.image,(50,30))
+
+    def update(self):
+        screen.blit(self.image_scaled,(self.x,self.y))
+
+default_sprite_group = pygame.sprite.Group()
+default_sprite_group.add(Healthbar(10,130,3,'game_pictures/Heart.png'))
+
 ###################################### Ab hier kommen Maiwands Klassen ############################################################
 
 class Helicopter (pygame.sprite.Sprite):
